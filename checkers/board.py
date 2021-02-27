@@ -62,11 +62,30 @@ class Board:
             moves.update(self._traverse_left(row -1, max(row-3, -1), -1, piece.colour, left))
             moves.update(self._traverse_right(row -1, max(row-3, -1), -1, piece.colour, right))
 
-        if piece.colour == WHITE or piece.king: 
+        if piece.colour == BLUE or piece.king: 
             moves.update(self._traverse_left(row +1, min(row+3, ROWS), 1, piece.colour, left))
             moves.update(self._traverse_right(row +1, min(row+3, ROWS), 1, piece.colour, right))
         
         return moves 
+    
+    def remove(self, pieces):
+        for piece in pieces:
+            self.board[piece.row][piece.col] = 0
+            if piece != 0:
+                if piece.colour == RED: 
+                    self.red_left -= 1
+                else:
+                    self.blue_left -= 1
+    
+    def winner(self):
+        if self.red_left <= 0:
+            return BLUE  
+        elif self.blue_left <= 0:
+            return RED 
+        
+        return None 
+    
+
     
     def _traverse_left(self, start, stop, step, colour, left, skipped=[]):
         moves = {}

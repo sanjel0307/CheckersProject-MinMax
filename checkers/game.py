@@ -22,6 +22,9 @@ class Game:
 
     def reset(self):
         self._init()
+    
+    def winner(self):
+        return self.board.winner()
 
     def select(self, row, col):
         if self.selected:
@@ -39,6 +42,7 @@ class Game:
         return False
 
 
+
     def _move(self, row, col):
         piece = self.board.get_piece(row, col)
         if self.selected and piece == 0 and (row, col) in self.valid_moves:
@@ -54,6 +58,7 @@ class Game:
 
 
     def change_turn(self):
+        self.valid_moves = {}
         if self.turn == RED:
             self.turn = BLUE
         else:
