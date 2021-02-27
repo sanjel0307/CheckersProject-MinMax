@@ -15,5 +15,5 @@ GREY = (128, 128, 128)
 BROWN = (165, 42, 42)
 YELLOW = (255, 255, 0)
 
-CROWN = pygame.transform.scale(pygame.image.load('checkers\Assets\crown.png'), (45, 25))
+CROWN = pygame.transform.scale(pygame.image.load('CheckersProject-MinMax\checkers\Assets\crown.png'), (45, 25))
 
